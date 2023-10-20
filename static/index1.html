@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Car Management App</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS file for styling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="myController.js"></script>
+    <script src="myService.js"></script>
+    
+</head>
+<body ng-controller="myController as ctrl" class="container">
+    <h1>Car Management App</h1>
+    
+    <!-- Car Entry Form -->
+    <form ng-submit="addCar()" class="car-form">
+        <label for="id">ID</label>
+        <input type="number" id="id" ng-model="currentcar.id" placeholder="Enter ID" required>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" ng-model="currentcar.name" placeholder="Enter Name" required>
+
+        <label for="model">Model</label>
+        <input type="text" id="model" ng-model="currentcar.model" placeholder="Enter Model" required>
+
+        <label for="fuelType">Fuel Type</label>
+        <input type="text" id="fuelType" ng-model="currentcar.fuelType" placeholder="Enter Fuel Type" required>
+
+        <label for="carType">Car Type</label>
+        <input type="text" id="carType" ng-model="currentcar.carType" placeholder="Enter Car Type" required>
+
+        <label for="price">Price</label>
+        <input type="number" id="price" ng-model="currentcar.price" placeholder="Enter Price" required>
+
+        <label for="seater">Seater</label>
+        <input type="number" id="seater" ng-model="currentcar.seater" placeholder="Enter Seater" required>
+
+        <label for="color">Color</label>
+        <input type="text" id="color" ng-model="currentcar.color" placeholder="Enter Color" required>
+
+        <label for="transmission">Transmission</label>
+        <input type="text" id="transmission" ng-model="currentcar.transmission" placeholder="Enter Transmission" required>
+
+        <label for="year">Year</label>
+        <input type="number" id="year" ng-model="currentcar.year" placeholder="Enter Year" required>
+
+        <button type="submit">Submit</button>
+        <button type="button" ng-click="clearForm()">Clear</button>
+
+    </form>
+
+    <!-- List of Cars -->
+    <table class="car-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Model</th>
+                <th>Fuel Type</th>
+                <th>Car Type</th>
+                <th>Price</th>
+                <th>Seater</th>
+                <th>Color</th>
+                <th>Transmission</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="car in cars">
+                <td>{{ car.id }}</td>
+                <td>{{ car.name }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.fuelType }}</td>
+                <td>{{ car.carType }}</td>
+                <td>{{ car.price }}</td>
+                <td>{{ car.seater }}</td>
+                <td>{{ car.color }}</td>
+                <td>{{ car.transmission }}</td>
+                <td>{{ car.year }}</td>
+                <td>
+                    <button ng-click="updateCar(car)">Edit</button>
+                    <button ng-click="deleteCar(car)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
